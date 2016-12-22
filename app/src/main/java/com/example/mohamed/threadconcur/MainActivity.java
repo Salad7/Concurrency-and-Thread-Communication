@@ -22,20 +22,20 @@ public class MainActivity extends AppCompatActivity {
         progressDialog.setCancelable(false);
         progressDialog.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
 
-        Thread t = new Thread(new DoWork());
+
+        new Thread(new DoWork()).start();
         handler = new Handler(new Handler.Callback() {
             @Override
             public boolean handleMessage(Message message) {
 
             switch (message.what){
-                case 0x00:
-
-                    break;
-                case 0x01:
+                case DoWork.STATUS_START:
                     progressDialog.show();
-                progressDialog.setMessage(""+message.obj);
                     break;
-                case 0x02:
+                case DoWork.STATUS_STEP:
+                progressDialog.setProgress((Integer)message.obj);
+                    break;
+                case DoWork.STATUS_DONE:
 
                     break;
                 default:
@@ -47,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        t.run();
+        //t.run();
 
     }
 
