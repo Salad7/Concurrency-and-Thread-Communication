@@ -16,7 +16,11 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        progressDialog = new ProgressDialog(this);
         progressDialog.setTitle("Downloading...");
+        progressDialog.setMax(100);
+        progressDialog.setCancelable(false);
+        progressDialog.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
 
         Thread t = new Thread(new DoWork());
         handler = new Handler(new Handler.Callback() {
@@ -25,10 +29,13 @@ public class MainActivity extends AppCompatActivity {
 
             switch (message.what){
                 case 0x00:
-                        break;
+
+                    break;
                 case 0x01:
+                progressDialog.setMessage(""+message.obj);
                     break;
                 case 0x02:
+
                     break;
                 default:
                     break;
