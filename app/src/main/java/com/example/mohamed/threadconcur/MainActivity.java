@@ -10,8 +10,20 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Thread t = new Thread(new Worker());
+        Thread t = new Thread(new DoWork());
+
         t.run();
 
     }
+
+
+    public class DoWork implements Runnable{
+
+        @Override
+        public void run() {
+                for(int i = 0; i < 100; i++){
+
+                }
+            }
+        }
 }
