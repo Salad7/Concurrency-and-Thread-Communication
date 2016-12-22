@@ -46,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         new Thread(new DoWork()).start();
-        //t.run();
+
 
     }
 
