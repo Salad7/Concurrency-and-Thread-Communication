@@ -32,6 +32,7 @@ public class MainActivity extends AppCompatActivity {
 
                     break;
                 case 0x01:
+                    progressDialog.show();
                 progressDialog.setMessage(""+message.obj);
                     break;
                 case 0x02:
