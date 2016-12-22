@@ -23,7 +23,6 @@ public class MainActivity extends AppCompatActivity {
         progressDialog.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
 
 
-        new Thread(new DoWork()).start();
         handler = new Handler(new Handler.Callback() {
             @Override
             public boolean handleMessage(Message message) {
@@ -46,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
                 return false;
             }
         });
-
+        new Thread(new DoWork()).start();
         //t.run();
 
     }
@@ -65,7 +64,7 @@ public class MainActivity extends AppCompatActivity {
             msg.what= STATUS_START;
             handler.sendMessage(msg);
                 for(int i = 0; i < 100; i++){
-                    for(int x = 0; x < 100000000; x++){
+                    for(int x = 0; x < 1000; x++){
                         msg = new Message();
                         msg.what= STATUS_STEP;
                         msg.obj = i;
